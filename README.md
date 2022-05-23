@@ -40,3 +40,10 @@ Slicing string:
 b = "Hello, World!"
 print(b[2:5])
 ```
+
+Modify strings:
+we can use built-in methods to modify strings:
+- ```.uppper()``` - string to upper case
+- ```.strip()``` -  removes any whitespace from the beginning or the end
+- ```.replace()``` - replaces a string with another string
+- ```.split()``` - splits the string into substrings if it finds instances of the separator
