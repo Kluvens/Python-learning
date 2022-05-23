@@ -47,3 +47,50 @@ we can use built-in methods to modify strings:
 - ```.strip()``` -  removes any whitespace from the beginning or the end
 - ```.replace()``` - replaces a string with another string
 - ```.split()``` - splits the string into substrings if it finds instances of the separator
+
+## Python operators
+
+### Arithmetic operators
+- ```+``` - addition
+- ```-``` - subtraction
+- ```*``` - multiplication
+- ```/``` - division
+- ```%``` - modulus
+- ```**``` - exponentiation
+- ```//``` - floor division
+
+### Assignment operators
+```
+=, +=, -=, *=, /=, %=, //=, **=, &=, |=, ^=, >>=, <<=
+```
+
+### Comparison operators
+```
+==, !=, <, >, <=, >=
+```
+
+### Logical operators
+```
+and, or, not
+```
+
+### Identity operators
+```
+is, is not
+```
+
+### Membership operators
+```
+in, not in
+```
+
+### Bitwise operators
+```
+&, |, ^, ~, >>, <<
+```
+
+## Python Lists
+- List items are ordered, changeable, and allow duplicate values.
+- List items can be of any data type.
+
+
