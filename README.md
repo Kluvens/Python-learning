@@ -355,3 +355,43 @@ x = re.sub("\s", "9", txt)
 print(x)
 ```
 
+## Python unpacking
+``` python
+# unpacking tuples
+(a, b, c) = (1, 2, 3)
+(a, b, c) = 1, 2, 3
+a, b, c = (1, 2, 3)
+a, b, c = 1, 2, 3
+
+# unpacking iterables
+a, b, c = '123'
+a, b, c = [1, 2, 3]
+a, b, c = {'one': 1, 'two':2, 'three': 3}
+a, b, c = (i ** 2 for i in range(3))
+x, y, z = range(3)
+a, b, c = {'a', 'b', 'c'}
+first, *body, last = [1, 2, 3, 4]
+
+# packing with the * operator
+*a, = 1, 2          # where a = [1, 2]
+a, *b = 1, 2, 3     # where a = 1 and b = [2, 3]
+*a, b = 1, 2, 3     # where a = [1, 2] and b = 3d
+
+# swapping values between variables
+a = 100
+b = 200
+a, b = b, a
+
+# merging iterables with the * operator
+my_tuple = (1, 2, 3)
+(0, *my_tuple, 4)         # (0, 1, 2, 3, 4)
+
+# defining functions with * and **
+def func(required, *args, **kwargs):
+  print(required)
+  print(args)
+  print(kwargs)
+  # Welcome to...
+  # (1, 2, 3)
+  # {'site': 'StackAbuse.com'}
+```
