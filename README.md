@@ -171,3 +171,187 @@ for x in range(6):
 else:
   print("Finally finished!")
 ```
+
+## Python functions
+``` python
+def my_function(fname):
+  print(fname + " Refsnes")
+
+my_function("Emil")
+my_function("Tobias")
+my_function("Linus")
+```
+Arbitrary Arguments, \*args: this way the function will receive a tuple of arguments
+``` python
+def my_function(*kids):
+  print("The youngest child is " + kids[2])
+
+my_function("Emil", "Tobias", "Linus")
+```
+Keyword Arguments:
+``` python
+def my_function(child3, child2, child1):
+  print("The youngest child is " + child3)
+
+my_function(child1 = "Emil", child2 = "Tobias", child3 = "Linus")
+```
+Arbitrary Keyword Arguments, \*\*kwargs: this way the function will receive a dictionary of arguments
+``` python
+def my_function(**kid):
+  print("His last name is " + kid["lname"])
+
+my_function(fname = "Tobias", lname = "Refsnes")
+```
+Default parameter value:
+``` python
+def my_function(country = "Norway"):
+  print("I am from " + country)
+
+my_function("Sweden")
+my_function("India")
+my_function()
+my_function("Brazil")
+```
+
+## Python recursion
+``` python
+def tri_recursion(k):
+  if(k > 0):
+    result = k + tri_recursion(k - 1)
+    print(result)
+  else:
+    result = 0
+  return result
+
+print("\n\nRecursion Example Results")
+tri_recursion(6)
+```
+
+## Python lambda
+A lambda function is a small anonymous function. This is functional programming.
+``` python
+x = lambda a, b, c : a + b + c
+print(x(5, 6, 2))
+```
+``` python
+def myfunc(n):
+  return lambda a : a * n
+
+mydoubler = myfunc(2)
+
+print(mydoubler(11))
+```
+
+## Python modules
+``` python
+import mymodule
+
+mymodule.greeting("Jonathan")
+```
+``` python
+from mymodule import person1
+
+print (person1["age"])
+```
+
+## Python Datetime
+Date output:
+``` python
+import datetime
+
+x = datetime.datetime.now()
+
+print(x.year)
+print(x.strftime("%A"))
+```
+Creating date objects:
+``` python
+import datetime
+
+x = datetime.datetime(2020, 5, 17)
+
+print(x)
+```
+
+## Python Math
+``` python
+import math
+
+x = math.sqrt(64)
+
+print(x)
+```
+
+## Python and JSON
+Parse JSON - Convert from JSON to Python:
+``` python
+import json
+
+# some JSON:
+x =  '{ "name":"John", "age":30, "city":"New York"}'
+
+# parse x:
+y = json.loads(x)
+
+# the result is a Python dictionary:
+print(y["age"])
+```
+Convert from Python to JSON:
+``` python
+import json
+
+# a Python object (dict):
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+
+# convert into JSON:
+y = json.dumps(x)
+
+# the result is a JSON string:
+print(y)
+```
+
+## RegEx in Python
+``` python
+import re
+
+txt = "The rain in Spain"
+x = re.search("^The.*Spain$", txt)
+```
+findall() function - Returns a list containing all matches:
+``` python
+import re
+
+txt = "The rain in Spain"
+x = re.findall("ai", txt)
+print(x)
+```
+search() function - Returns a Match object if there is a match anywhere in the string:
+``` python
+import re
+
+txt = "The rain in Spain"
+x = re.search("\s", txt)
+
+print("The first white-space character is located in position:", x.start())
+```
+split() function - returns a list where the string has been split at each match:
+``` python
+import re
+
+txt = "The rain in Spain"
+x = re.split("\W", txt)
+print(x)
+```
+sub() function: - replaces the matches with the text of your choice:
+``` python
+import re
+
+txt = "The rain in Spain"
+x = re.sub("\s", "9", txt)
+print(x)
+```
+
