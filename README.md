@@ -395,3 +395,79 @@ def func(required, *args, **kwargs):
   # (1, 2, 3)
   # {'site': 'StackAbuse.com'}
 ```
+
+## Python decorators
+``` python
+def f1(func):
+    def wrapper():
+        print("Started")
+        func()
+        print("ended")
+
+    return wrapper
+
+def f():
+    print("Hello")
+
+f1(f)()
+'''
+output is Started
+Hello
+ended
+'''
+```
+We can use decorator to achieve the same thing:
+``` python
+def f1(func):
+    def wrapper():
+        print("Started")
+        func()
+        print("ended")
+
+    return wrapper
+
+@f1
+def f():
+    print("Hello")
+
+f()
+'''
+output is Started
+Hello
+ended
+'''
+```
+with parameters:
+``` python
+def f1(func):
+    def wrapper(*args, **kwargs):
+        print("Started")
+        func(*args, **kwargs)
+        print("ended")
+
+    return wrapper
+
+@f1
+def f(a, b):
+    print(a, b)
+
+f("Hi!", "Hello")
+'''
+output is Started
+Hi! Hello
+ended
+'''
+```
+Chaining decorators:
+``` python
+@star
+@percent
+def printer(msg):
+    print(msg)
+# is equivalent to:
+'''
+def printer(msg):
+    print(msg)
+printer = star(percent(printer))
+'''
+```
