@@ -43,3 +43,50 @@ python raw-string is prefixed with an r(for raw)
 
 Therefore, r'Hello\nAndrew' == 'Hello\\nAndrew'
 and print(r'Hello\nAndrew') should give Hello\nAndrew
+
+## match objects
+re.search, re.match, re.fullmatch return a match object if a match suceeds, None if it fails.
+
+## capturing parts of a regex match
+- brackets are used for grouping in extend regular expressions
+- in python brackets also capture the part of the string matched
+- group(n) returns part of the string matched by the nth-pair of brackets
+- \number can be used to refer to group number in an re.sub replacement string
+
+```
+>>> m = re.search('(\w+)\s+(\w+)', 'Hello Andrew')
+>>> m.groups()
+('Hello', 'Andrew')
+>>> m.group(1)
+'Hello'
+>>> m.group(2)
+'Andrew'
+```
+```
+>>> re.sub(r'(\d+) and (\d+)', r'\2 or \1', "The answer is 42 and 43?")
+'The answer is 43 or 42?'
+```
+
+## back-referencing
+- \number can be used further on in a regex - often called a back-reference
+```
+>>> re.search(r'^(\d+) (\d+)$', '42 43')
+<re.Match object; span=(0, 5), match='42 43'>
+>>> re.search(r'^(\d+) (\1)$', '42 43')
+>>> re.search(r'^(\d+) (\1)$', '42 42')
+<re.Match object; span=(0, 5), match='42 42'>
+```
+- back-references allow matching impossible with classical regular expressions
+- python supports up to 99 back-references, \1, \2, \3, …, \99
+
+## non-capturing group
+(?:...) is a non-capturing group
+- it has the same grouping behaviour as (...)
+- it doesn’t capture the part of the string matched by the group
+```
+>>> m = re.search(r'.*(?:[aeiou]).*([aeiou]).*', 'abcde')
+>>> m
+<re.Match object; span=(0, 5), match='abcde'>
+>>> m.group(1)
+'e'
+```
